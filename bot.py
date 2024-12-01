@@ -45,7 +45,7 @@ def fetch_drama_details(drama_name):
 # Format drama details for display
 def format_drama_details(drama, user_name):
     if not drama:
-        return "Sorry, no details found for the requested drama."
+        return f"Sorry, {user_name}, no details found for the requested drama."
     
     # Unpack drama details
     title, year, rating, rating_count, description, country, episodes, airing_start, airing_end, network, duration, content_rating, genre, trailer_url, image_url = drama
@@ -77,6 +77,7 @@ def format_drama_details(drama, user_name):
 [▶️ Watch Trailer]({trailer_url})
     """
 
+# Handle user messages
 async def message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_input = update.message.text.strip()
     user_name = update.effective_user.first_name  # Get user's first name
